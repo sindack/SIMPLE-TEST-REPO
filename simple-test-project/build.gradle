@@ -31,20 +31,30 @@ dependencies {
 */
 
 apply plugin: 'java'
- 
+
+ext.junit4Version        = '4.12'
+ext.junitVintageVersion  = '4.12.2'
+ext.junitPlatformVersion = '1.0.2'
+ext.junitJupiterVersion  = '5.0.2'
+
 repositories {
     jcenter()
 }
  
 dependencies {
-    testCompile 'junit:junit:4.12'
-    compile 'junit:junit:4.12'
+    testCompile("junit:junit:${junit4Version}")
+    testRuntime("junit:junit:${junit4Version}")
 }
 
 sourceSets {
-	main{
+	test{
 		java {
 			srcDir 'src/'
 		}
+	}
+}
+test {
+	testLogging {
+		showStandardStreams = true
 	}
 }
